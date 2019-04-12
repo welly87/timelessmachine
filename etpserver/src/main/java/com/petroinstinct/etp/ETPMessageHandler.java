@@ -12,6 +12,7 @@ public class ETPMessageHandler extends BinaryWebSocketHandler {
     @Override
     protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message) throws Exception {
         System.out.println(message.getPayload());
+
         message.getPayload().array();
     }
 }
