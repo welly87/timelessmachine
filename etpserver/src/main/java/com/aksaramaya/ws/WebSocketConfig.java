@@ -1,4 +1,4 @@
-package com.petroinstinct.etp;
+package com.aksaramaya.ws;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,12 +12,18 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(myHandler(), "/etp");
+        registry.addHandler(binaryHandler(), "/etp");
+        registry.addHandler(textHandler(), "/mdls");
     }
 
     @Bean
-    public ETPMessageHandler myHandler() {
-        return new ETPMessageHandler();
+    public BinaryMessageHandler binaryHandler() {
+        return new BinaryMessageHandler();
+    }
+
+    @Bean
+    public TextMessageHandler textHandler() {
+        return new TextMessageHandler();
     }
 
 }
