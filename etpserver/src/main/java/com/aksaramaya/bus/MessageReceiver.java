@@ -19,7 +19,6 @@ public class MessageReceiver  {
     private static final String CLIENT_ID = "SampleConsumer";
  
     public MessageReceiver(String topic) {
-
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_SERVER_URL + ":" + KAFKA_SERVER_PORT);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, CLIENT_ID);
@@ -41,6 +40,9 @@ public class MessageReceiver  {
             ConsumerRecords<Integer, String> records = consumer.poll(1000);
             for (ConsumerRecord<Integer, String> record : records) {
                 System.out.println("Received message: (" + record.key() + ", " + record.value() + ") at offset " + record.offset());
+
+                // store ke kudu
+
             }
         }
     }
